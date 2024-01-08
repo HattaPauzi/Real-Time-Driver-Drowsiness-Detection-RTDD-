@@ -1,82 +1,9 @@
-# driver-fatigue-detection-system
-drowsiness detection
+This project is based on the research paper "Real-time Driver Drowsiness Detection for Android Application Using Deep Neural Networks Techniques" by Rateb Jabbar et al. published in Procedia Computer Science in 2018. The aim of this project is to implement the proposed approach for real-time driver drowsiness detection on an Android application using deep neural networks techniques.
 
-# Intallation process
+The proposed approach consists of five steps: extracting videos from the NTHU database, extracting images from video frames, extracting landmark coordination from images using the Dlib library, preparing a deep learning model based on facial landmark key point detection, and evaluating the state or level of drowsiness of the driver.
 
-## step 1:
- Install all libraries 
- - scipy  (pip install scipy)
-     - We’ll need the SciPy package so we can compute the Euclidean distance between facial landmarks points in the eye aspect ratio calculation (not strictly a requirement, but you should have SciPy installed if you intend on doing any work in the computer vision, image processing, or machine learning space).
+The Android mobile camera is used to take facial pictures of the driver, which are then transferred to the Dlib library for facial landmark detection. The collected data is then passed to the driver drowsiness detection algorithm based on the trained model, which evaluates the state or level of drowsiness of the driver. If the result indicates drowsiness, the application signals the driver with visual and audio messages.
 
-- OpenCv
-  - openCv for computer vision
+The dataset used for training and testing consists of videos of 18 subjects from the NTHU database, recorded in five simulated driving scenarios. The proposed model is able to achieve an accuracy of more than 80%.
 
-- numpy (pip install numpy)
-  - numpy for basic processing and calcutions ...
-
-- imutils (pip install imutils)
-   - We’ll also need the imutils package, my series of computer vision and image processing functions to make working with OpenCV easier.
-
--  pyglet (pip install pyglet)
-    - we'll also need pyglet  playing sound such as .mp3 , .wav ...  
-
--  dlib
-   - To detect and localize facial landmarks we’ll need the dlib library
-
-
-# installation of Dlib libary 
-These instructions assume you are on macOS, but basically the same on Linux.
-
-Pre-reqs:
-- Have Python 3 installed. On macOS, this could be installed from homebrew or even via standard 
-  Python 3.6 downloaded installer from https://www.python.org/download. On Linux, just use your
-  package manager.
-- On macOS:
-  - Install XCode from the Mac App Store (or install the XCode command line utils).
-  - Have [homebrew](https://brew.sh/) installed
-  - Install boost with this command: `brew install boost-python --with-python3 --without-python`
-- On Linux:
-  - Install boost. On Ubuntu, that's `sudo apt-get install libboost-all-dev`
-- This assumes you don't have an nVidia GPU and don't have Cuda and cuDNN installed and don't want
-  GPU acceleration (since none of the current Mac models support this).
-- On Windows:
-  - Please follow this link to install dlib on Windows: https://www.learnopencv.com/install-dlib-on-windows/
-
-Clone the code from github:
-
-```bash
-git clone https://github.com/davisking/dlib.git
-```
-
-Build the main dlib library:
-
-```bash
-cd dlib
-mkdir build; cd build; cmake .. -DDLIB_USE_CUDA=0 -DUSE_AVX_INSTRUCTIONS=1; cmake --build .
-```
-
-Build and install the Python extensions:
-
-```bash
-cd ..
-python3 setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
-```
-
-At this point, you should be able to run `python3` and type `import dlib` successfully.
-
-# if you have python 2.7.---
-```bash
-cd ..
-python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
-```
-# step 2
-- Download the dlib’s pre-trained facial landmark detector. from hear "http://jmp.sh/4bIYiPU " place it place it same floder where alarm.wav contains 
-
-- Note: without dlib’s pre-trained facial landmark detector file you can't run the code 
-
-# step 3
-
-```bash
-python drowsiness detection.py
-
-```
+This project includes the implementation of the proposed approach on an Android application using deep neural networks techniques. The code is written in python language, and the Dlib library is used for facial landmark detection. The project can be used as a tool for real-time driver drowsiness detection, which can contribute to improving road safety and preventing accidents.
